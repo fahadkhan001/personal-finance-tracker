@@ -4,6 +4,9 @@ import dotenv from 'dotenv'
 dotenv.config();
 import userRouter from './routes/userRoutes.js'
 import authRouter from './routes/authRoutes.js'
+import cors from 'cors';
+
+
 mongoose
 .connect(process.env.MONGO_URL)
 .then(() => {
@@ -16,6 +19,7 @@ mongoose
 
 const app = express();
 app.use(express.json())
+app.use(cors())
 app.use(express.urlencoded({extended:true}))
 
 

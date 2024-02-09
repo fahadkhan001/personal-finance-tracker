@@ -1,56 +1,58 @@
-import React, { useState } from 'react'
-import {signInStart,signInSuccess,signInFailure} from '../redux/user/UserSlice.js'
+import React, { useState,  } from 'react'
 import {useSelector,useDispatch} from 'react-redux'
 import {Link, useNavigate} from 'react-router-dom'
+import {signInStart,signInSuccess,signInFailure} from '../redux/user/UserSlice.js'
 import { FaUser,FaLock,FaEnvelope } from "react-icons/fa";
 
 
 
+const Signup = () => {
+    const [formData, setFormData] = useState({});
+    const [loading,setLoading] = useState(false) ;
+    const [error,setError] = useState(null) ;
 
+    const navigate = useNavigate();
 
-
-
-
-
-const Signin = () => {
-const [formData,setFormData] = useState({})
-const [loading,error] = useSelector((state)=>state.user)
-const dispatch = useDispatch();
-const navigate = useNavigate();
-
-
-const handleChange = (e) => {
-  setFormData({
-    ...formData,
-    [e.target.id]: e.target.value,
-  });
-};
-
+const handleChange =(e)=>{
+    setFormData({
+        ...formData,
+        [e.target.id] : e.target.value,
+    })
+}
 const handleSubmit=async(e)=>{
-  e.preventDefault();
+    e.preventDefault();
     try {
-      dispatch(signInStart());
-      const res = await fetch('/api/auth/signin', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-      const data = await res.json();
-      console.log(data);
-      if (data.success === false) {
-        dispatch(signInFailure(data.message))
-        return;
-      }
-      dispatch(signInSuccess(data))
-      navigate('/');
+        setLoading(true);
+        const res = await fetch("/api/auth/signup",{
+            method:"POST",
+            headers:{
+                'Content-Type': 'application/json',
+            },
+            body:JSON.stringify(formData)
+        })
+        const data = await res.json();
+        console.log(data);
+        if(data.success == false){
+            setError(data.message);
+            setLoading(false);
+            return;
+        }
+        setLoading(false);
+        setError(null)
+        navigate('/sign-in');
+
+
     } catch (error) {
-      dispatch(signInFailure(error.message))
+        setLoading(false);
+        setError(error.message)
     }
+
+    
 }
 
+
   return (
+   
     <div className='text-black h-[80vh] flex justify-center items-center bg-cover '>
     <div className='p-3 max-w-lg mx-auto border-[1.5px] items-center justify-center  rounded-lg border-black mt-3 shadow-md hover:shadow-lg hover:scale-105 transition-shadow overflow-hidden  w-full sm:w-[500px] h-[500px] '>
     <h1 className='font-semibold text-center my-7 text-3xl'>Sign-up<span className='text-yellow-500 font-bold'> Kitchen Spurs Finance</span></h1>
@@ -89,4 +91,4 @@ const handleSubmit=async(e)=>{
   )
 }
 
-export default Signin;
+export default Signup;
