@@ -1,8 +1,7 @@
 import React, { useState,  } from 'react'
-import {useSelector,useDispatch} from 'react-redux'
 import {Link, useNavigate} from 'react-router-dom'
-import {signInStart,signInSuccess,signInFailure} from '../redux/user/UserSlice.js'
 import { FaUser,FaLock,FaEnvelope } from "react-icons/fa";
+import Oauth from '../components/Oauth';
 
 
 
@@ -77,6 +76,7 @@ const handleSubmit=async(e)=>{
 
 
     <button disabled={loading}  className='bg-yellow-500 w-[450px] font-semibold p-3 border rounded-lg uppercase hover:opacity-95  disabled:opacity-80'>{loading ? "Loading..." :"Sign up"}</button>
+    <Oauth />
     </form>
     <div className='flex  gap-2 mt-2 '>
     <p >Already have and account?</p>

@@ -2,26 +2,35 @@ import mongoose from "mongoose";
 
 const transactionSchema = new mongoose.Schema(
     {
+        userid:{
+            type:String,
+            required:true
+        },
         amount:{
             type:Number,
-            required:[true,'Amount is required'],
+            required:[true,"amount is required"],
 
+        },
+        type:{
+            type:String,
+            required:[true,"type is required"]
         },
         category:{
             type:String,
-            required:[true,'Category is required']
+            required:[true,"Category is required"]
 
         },
-        refrences:{
+        refrence:{
             type:String,
 
         },
         description:{
             type:String,
-            required:[true,'Desc is required']
+            required:[true,"desc is required"]
         },
         date:{
-            required:[true,'date is required']
+            type:Date,
+            required:[true,"date is rewquired"]
 
         },
     },{timestamp:true}

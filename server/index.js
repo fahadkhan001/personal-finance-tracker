@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 dotenv.config();
 import userRouter from './routes/userRoutes.js'
 import authRouter from './routes/authRoutes.js'
+import transactionRouter from './routes/transactionRoutes.js'
 import cors from 'cors';
 
 
@@ -30,6 +31,7 @@ app.listen(3000,()=>{
 
 app.use('/api/user', userRouter);
 app.use("/api/auth", authRouter);
+app.use("/api/trans",transactionRouter)
 
 
 
