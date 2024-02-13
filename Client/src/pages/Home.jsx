@@ -154,7 +154,7 @@ const handleSubmit=async(e)=>{
       <h6>Type </h6>
            <Select className='w-[100px]' value={type} onChange={(values)=>setType(values)} >
            <Select.Option value="all">All</Select.Option>
-           <Select.Option value="salary" >Salary</Select.Option>
+           <Select.Option value="income" >Income</Select.Option>
            <Select.Option value="expense" >Expense</Select.Option>
            </Select>
         </div>
@@ -166,6 +166,8 @@ const handleSubmit=async(e)=>{
           <button className='bg-yellow-500 shadow-lg hover:shadow-yellow-200 border rounded-lg p-3 hover:text-white font-bold' onClick={()=>setOpenModal(true)}>Add Transaction</button>
         </div>
       </div>
+      <p className='mt-6 font-serif font-bold text-center my-4 '>History</p>
+
 
       <div className=''>
       {viewData === 'table' ? 
@@ -175,6 +177,7 @@ const handleSubmit=async(e)=>{
       }
       </div>
       <Modal  title={editable ? 'Edit Transaction' : "Add Transaction"} open={openModal} onCancel={()=>setOpenModal(false)} footer={false} >
+      
       <Form layout='vertical' onFinish={handleSubmit} initialValues={editable}>
         
       <Form.Item label="Amount" name="amount" >
@@ -211,6 +214,7 @@ const handleSubmit=async(e)=>{
         <div className='flex justify-end'>
         <button type='submit' className='border rounded-lg hover:bg-yellow-400 p-3 font-bold w-[100px]'>Save</button>
         </div>
+        
 
       </Form>
       </Modal>
