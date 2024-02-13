@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import {signInStart,signInSuccess,signInFailure} from '../redux/user/userSlice.js'
+import {signInStart,signInSuccess,signInFailure} from '../redux/user/UserSlice.js'
 import { useDispatch, useSelector } from 'react-redux';
 import {Link, useNavigate} from 'react-router-dom'
 import { FaUser,FaLock,FaEnvelope } from "react-icons/fa";
