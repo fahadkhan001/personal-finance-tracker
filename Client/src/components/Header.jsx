@@ -20,13 +20,13 @@ const Header = () => {
         <li className='hover:bg-blue-50'>Home</li>
         </Link>
         <Link to={'/about'}>
-        <li className='hover:bg-blue-50'>About </li>
+        <li className='hover:bg-blue-50'>About</li>
         </Link>
         <Link to={'/profile'}>
         {currentUser ? (
           <img className='rounded-full h-7 w-7 object-cover' src={currentUser.avatar} alt='profile' />
         ): (
-          <li className=' text-gray-50 hover:bg-emerald-800' >Sign-In</li>
+          <li className=' text-gray-50 hover:bg-emerald-700' >Sign-In</li>
       )}
       </Link>
         
