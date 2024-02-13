@@ -5,6 +5,8 @@ import {UnorderedListOutlined,AreaChartOutlined,EditOutlined,DeleteOutlined} fro
 import axios from 'axios'
 import moment from 'moment'
 import Analytics from '../components/Analytics'
+import TotalIncome from './TotalIncome'
+import Footer from '../components/Footer'
  
 export default function Home() {
   const [openModal, setOpenModal] =useState(false)
@@ -96,6 +98,7 @@ useEffect(()=>{
 
 
 const handleSubmit=async(e)=>{
+  e. preventDefault();
  try {
   console.log(currentUser)
   setLoading(true);
@@ -133,19 +136,11 @@ const handleSubmit=async(e)=>{
 
 
   return (
-    
-    <div className='flex flex-col '>
-    <div className='justify-end  items-center flex '>
-    <div className='justify-center items-center flex uppercase flex-col mt-5 border w-[200px] rounded-lg h-[100px] font-bold bg-yellow-300 '>
-    {}
-    <div>
-    {/*income */}
-    ₹5000
-    </div>
-    </div>
-    </div>
-      <div className='flex items-center justify-between  shadow-lg p-3 mt-[80px]'>
-        <div className='border rounded-lg p-2 shadow-lg hover:shadow-yellow-500'>
+<>
+    <div className='flex flex-col gap-2 p-3 '>
+    <TotalIncome alltransaction={allTransaction} />
+      <div className='flex items-center justify-between border border-slate rounded-lg    shadow-lg p-3 mt-[5px]'>
+        <div className='border bg-yellow-300 rounded-lg p-2 shadow-lg hover:shadow-yellow-500'>
           <h6>SORT </h6>
            <Select value={frequency} onChange={(values)=>setFrequency(values)} >
            <Select.Option value="7">Last 1 Week</Select.Option>
@@ -153,7 +148,7 @@ const handleSubmit=async(e)=>{
            <Select.Option value="365" >Last 1 Year</Select.Option>
            </Select>
         </div>
-      <div className='border rounded-lg shadow-lg hover:shadow-yellow-200 p-2 '>
+      <div className='border bg-yellow-300 rounded-lg shadow-lg hover:shadow-yellow-200 p-2 '>
       <h6>Type </h6>
            <Select className='w-[100px]' value={type} onChange={(values)=>setType(values)} >
            <Select.Option value="all">All</Select.Option>
@@ -161,12 +156,12 @@ const handleSubmit=async(e)=>{
            <Select.Option value="expense" >Expense</Select.Option>
            </Select>
         </div>
-        <div className='mx-2 border w-[80px] h-[50px] flex rounded-lg shadow-lg hover:shadow-yellow-200' >
+        <div className='mx-2 bg-yellow-300 border w-[80px] h-[50px] flex rounded-lg shadow-lg hover:shadow-yellow-200' >
         <UnorderedListOutlined className='mx-2 hover:scale-125 hover:text-blue-100  ' onClick={()=>setViewData('table')} />  
         <AreaChartOutlined className='mx-2 hover:scale-150 hover:text-blue-100 ' onClick={()=>setViewData('analytics')}  />
         </div>
         <div>
-          <button className='bg-yellow-500 border rounded-lg p-3 hover:text-white font-bold' onClick={()=>setOpenModal(true)}>Add Transaction</button>
+          <button className='bg-yellow-500 shadow-lg hover:shadow-yellow-200 border rounded-lg p-3 hover:text-white font-bold' onClick={()=>setOpenModal(true)}>Add Transaction</button>
         </div>
       </div>
 
@@ -217,10 +212,13 @@ const handleSubmit=async(e)=>{
 
       </Form>
       </Modal>
-    
+     
     
     
     </div>
+    <Footer />
+  </>
+
 
   )
 }
