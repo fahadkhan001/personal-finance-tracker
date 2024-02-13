@@ -13,3 +13,5 @@ PERSONAL FINANCE TRACKER.
  live link of the project: https://finance-tracker-7ab1.onrender.com
  <br />
  You first need to login using sign-in page then you can add the transactions.
+<br />
+To open graph choose the Analytics button and for the table choose table button before the add transaction button on the dashboard 
