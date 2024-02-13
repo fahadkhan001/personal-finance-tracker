@@ -1,5 +1,6 @@
-PERSONAL FINANCE TRACKER
- Dwonload the zip file 
+PERSONAL FINANCE TRACKER.
+<br />
+ Download the zip file.
  Open the folder in vs code or any other you like
  open the terminal 
  type npm i to install backend packages
