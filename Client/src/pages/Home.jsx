@@ -138,7 +138,9 @@ const handleSubmit=async(e)=>{
   return (
 <>
     <div className='flex flex-col gap-2 p-3 '>
+    <div className='bg-red-400 border rounded-lg shadow-xl shadow-yellow-300'>
     <TotalIncome alltransaction={allTransaction} />
+    </div>
       <div className='flex items-center justify-between border border-slate rounded-lg    shadow-lg p-3 mt-[5px]'>
         <div className='border bg-yellow-300 rounded-lg p-2 shadow-lg hover:shadow-yellow-500'>
           <h6>SORT </h6>
